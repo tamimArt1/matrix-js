@@ -72,7 +72,7 @@ class Matrix {
     if (this.col === other.row) {
       let newMatrix = [...Array(this.row)].map((x) => Array(other.col).fill(0));
       for (let i = 0; i < this.row; i++) {
-        for (let j = 0; j < this.col; j++) {
+        for (let j = 0; j < other.col; j++) {
           for (let k = 0; k < this.col; k++) {
             newMatrix[i][j] += this.data[i][k] * other.pick(k + 1, j + 1);
           }
@@ -105,13 +105,13 @@ class Matrix {
   }
 
   print() {
+    let tmpString = "|\t";
     for (let r = 0; r < this.row; r++) {
-      process.stdout.write("|");
       for (let c = 0; c < this.col; c++) {
-        process.stdout.write(` ${this.data[r][c]}`);
+        tmpString += this.data[r][c] + "\t";
       }
-      process.stdout.write(" |");
-      console.log();
+      console.log(tmpString + "|");
+      tmpString = "|\t";
     }
   }
 }
